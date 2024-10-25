@@ -16,12 +16,13 @@ export const sendEmail = async ({ email, subject, message }) => {
       from: process.env.SMTP_MAIL,
       to: email,
       subject: subject,
-      text: message,
+      html: message, // for decoration
+      // extra
+      
     };
 
     await transporter.sendMail(options);
     console.log("Mail sent successfully");
-
   } catch (error) {
     console.error("Couldn't send mail:", error);
     // If this is being used in an Express middleware, uncomment the following line:

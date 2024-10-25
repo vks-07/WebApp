@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     minLength: [8, "Password must contain atleast 8  characters"],
     maxLength: [32, "Password can't exceed 30 characters"],
-    select:false,
+    select:false,// bahar acces se rok rha hai
   },
   resume: {
     public_id: String,
@@ -53,6 +53,8 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+
+// instance method 
 userSchema.pre("save", async function(next){
   if(!this.isModified("password")){
     next();

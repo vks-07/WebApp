@@ -78,12 +78,24 @@ input::-webkit-outer-spin-button {
 }
 
 .navbar {
+  /* here */
+  /* position: fixed; */
+  /*  */
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgb(133, 133, 133);
   padding: 20px 110px;
   align-items: center;
+  /*  */
+   /* background: linear-gradient(45deg, #19a2b4, #0ac5ee,#19a2b4); Sunset colors */
+   /* color: white;  */
+   /* background: linear-gradient(270deg, #ff7e5f, #feb47b);
+   background-size: 400% 400%;
+   animation: gradientBG 15s ease infinite; */
 }
+
+
+
 .navbar .hamburger {
   display: none;
 }
@@ -105,11 +117,12 @@ input::-webkit-outer-spin-button {
 .navbar .links {
   display: flex;
   justify-content: space-between;
+  
 }
 .navbar .links ul {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 60px;
 }
 .navbar .links ul li {
   list-style-type: none;
@@ -118,11 +131,20 @@ input::-webkit-outer-spin-button {
   text-decoration: none;
   color: #444;
   transition: 0.3s;
+  font-weight:550;;
+
 }
-.navbar .links ul li a:hover {
-  color: #dfdf07;
-  transition: 0.3s;
-}
+
+
+  .navbar .links ul li a:hover {
+    color: #a044bf;
+    transition: transform 0.3s, color 0.3s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(1.5);
+  }
+  
+
+
 .navbar .links ul:last-child {
   gap: 10px;
 }
@@ -1417,3 +1439,7 @@ button:disabled:hover {
   cursor: not-allowed;
   color: #111;
 }
+
+
+/* here */
+

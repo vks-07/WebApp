@@ -7,10 +7,10 @@ const Navbar = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
   return (
     <>
-      <nav className={ show ? "navbar show_navbar" : "navbar"}>
+      <nav className={ show ? "navbar show_navbar" : "navbar"  }>
         <Link to={"/"} onClick={() => setShow(!show)}>
           <div className="logo">
-            <img src="./Job_Infinity.png" alt="logo" />
+            <img src="https://res.cloudinary.com/chai-or-code/image/upload/v1724740409/logo_mcistt.png" alt="logo" />
           </div>
         </Link>
       

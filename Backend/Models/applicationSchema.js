@@ -56,7 +56,7 @@ const applicationSchema = new mongoose.Schema({
   jobInfo:{
     jobId:{
         type: mongoose.Schema.Types.ObjectId,
-        // ref: "Job",
+        ref: "Job",// it is commented
         required: true,
     },
     jobTitle:{

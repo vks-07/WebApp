@@ -40,6 +40,11 @@ const userSlice = createSlice({
       state.message = null;
     },
     loginSuccess(state, action) {
+      console.log("payload: ", action.payload);
+
+      console.log("user : ", action.payload.user);
+      console.log("message : ", action.payload.message);
+
       state.loading = false;
       state.isAuthenticated = true;
       state.user = action.payload.user;
@@ -91,15 +96,20 @@ const userSlice = createSlice({
 export const register = (data) => async (dispatch) => {
   dispatch(userSlice.actions.registerRequest());
   try {
+    console.log("data:", data);
+
     const response = await axios.post(
       "http://localhost:4000/api/v1/user/register",
       data,
-    //   http://localhost:4000/api/v1/user/register
+      //   http://localhost:4000/api/v1/user/register
       {
         withCredentials: true,
-        headers: { "Content-Type": "multipart/form-data" },// 
+        headers: { "Content-Type": "multipart/form-data" }, //
       }
     );
+
+    console.log("response : ", response);
+
     dispatch(userSlice.actions.registerSuccess(response.data));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
@@ -134,10 +144,18 @@ export const getUser = () => async (dispatch) => {
         withCredentials: true,
       }
     );
+    console.log("res :", response);
+
+    console.log("res :", response.json());
+
     dispatch(userSlice.actions.fetchUserSuccess(response.data.user));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
-    dispatch(userSlice.actions.fetchUserFailed(error.response.data.message));
+    const errorMessage =
+      error.response && error.response
+        ? error.response.message
+        : "Something went wrong!";
+    dispatch(userSlice.actions.fetchUserFailed(errorMessage));
   }
 };
 export const logout = () => async (dispatch) => {

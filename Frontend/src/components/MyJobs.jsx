@@ -44,7 +44,7 @@ const MyJobs = () => {
             <h3>My Jobs</h3>
             <div className="applications_container">
               {myJobs.map((element) => (
-                <div key={index} className="card" key={element._id}>
+                <div  className="card" key={element._id}>
                   <p className="sub-sec">
                     <span>Job Title: </span>
                     {element.title}

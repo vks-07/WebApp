@@ -18,7 +18,7 @@ const Footer = () => {
     <>
       <footer>
         <div>
-          <img src="./Job_Infinity.png" alt="Job0Clock logo" />
+          <img src="https://res.cloudinary.com/chai-or-code/image/upload/v1724740409/logo_mcistt.png" alt="Job0Clock logo" />
         </div>
         <div>
           <h4>Support</h4>

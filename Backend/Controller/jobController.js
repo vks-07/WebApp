@@ -50,7 +50,7 @@ export const postJob = catchAsyncErrors(async (req, res, next) => {
       );
     }
 
-    console.log("zfgghjkj");
+    // console.log("zfgghjkj");
 
     const postedBy = req.user._id;
     // console.log("zfgghjkj");
@@ -63,7 +63,7 @@ export const postJob = catchAsyncErrors(async (req, res, next) => {
       introduction,
       responsibilities,
       qualifications,
-      // offers,
+      offers,
       salary,
       hiringMultipleCandidates,
       personalWebsite: {
@@ -130,10 +130,10 @@ export const getAllJobs = catchAsyncErrors(async (req, res, next) => {
 
 export const getMyJobs = catchAsyncErrors(async (req, res, next) => {
   try {
-    console.log("getMyJobs called");
+    // console.log("getMyJobs called");
     const myJobs = await Job.find({postedBy:req.user._id});
 
-    console.log("myJobs", myJobs);
+    // console.log("myJobs", myJobs);
     
     res.status(200).json({
       success: true,

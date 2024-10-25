@@ -22,10 +22,15 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     if (!name || !email || !phone || !address || !password || !role) {
       return next(new ErrorHandler("All fields are required", 400));
     }
-
+    // if(phone.length()!=10){
+    //   console.log("Please provide valid phone number");
+    //   return next(new ErrorHandler("Please provide valid phone number", 400));
+      
+    // }
     if (role === "Job Seeker" && (!firstNiche || !secondNiche || !thirdNiche)) {
       return next(
         new ErrorHandler("Please provide your preferred niches", 400)
+
       );
     }
 
@@ -75,7 +80,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     }
 
     const user = await User.create(userData);
-    console.log("user : ", user);
+    // console.log("user : ", user);
 
     sendToken(user, 201, res, "User registered");
 
@@ -90,10 +95,10 @@ export const register = catchAsyncErrors(async (req, res, next) => {
 
 export const login = catchAsyncErrors(async (req, res, next) => {
   try {
-    console.log("fchjkdsdbdfhngf");
+    // console.log("fchjkdsdbdfhngf");
     
     const { role, email, password } = req.body;
-    console.log("dfghjk");
+    // console.log("dfghjk");
 
     console.log(role, email, password);
 
@@ -113,20 +118,22 @@ export const login = catchAsyncErrors(async (req, res, next) => {
     if (!isPasswordMatched) {
       return next(new ErrorHandler("Invalid user and password", 400));
     }
-    console.log(user);
+    // console.log(user);
 
     if (user.role !== role) {
       return next(new ErrorHandler("Invalid role", 400));
     }
 
-    console.log(user.role);
-    console.log(role);
+    // console.log(user.role);
+    // console.log(role);
 
     // if(user.role != role){
     //   return next(
     //     new ErrorHandler("user role not matched", 400)
     //   )
     // }
+    // console.log("res :", res);
+    
     sendToken(user, 200, res, "User logged in successfully");
   } catch (error) {
     return next(new ErrorHandler("error while login", 400));
@@ -135,7 +142,7 @@ export const login = catchAsyncErrors(async (req, res, next) => {
 
 export const logout = catchAsyncErrors(async (req, res, next) => {
   try {
-    console.log("Logout");
+    // console.log("Logout");
 
     res
       .status(200)
@@ -158,11 +165,26 @@ export const getUser = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
       success: true,
       user,
+      message: "User retrieved successfully",
     });
   } catch (error) {
     return next(new ErrorHandler("Error while getting user", 400));
   }
 });
+
+// export const getUser = catchAsyncErrors(async (req, res, next) => {
+//   console.log("User:", req.user);  // Debugging step
+
+//   if (!req.user) {
+//     return next(new ErrorHandler("User not found", 404));
+//   }
+
+//   res.status(200).json({
+//     success: true,
+//     user: req.user,
+//     message: "User retrieved successfully",
+//   });
+// });
 
 // export const updateProfile = catchAsyncErrors(async (req, res, next) => {
 //   try {
@@ -257,7 +279,12 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
         thirdNiche: req.body.thirdNiche,
       },
     };
-
+    //***** */
+    // if(phone.length()!=10){
+    //   console.log("Please provide valid phone number");
+    //   return next(new ErrorHandler("Please provide valid phone number", 400));
+      
+    // }
     const { firstNiche, secondNiche, thirdNiche } = newUserData.niches;
     console.log("Fetched new user data");
 
