@@ -38,45 +38,46 @@ const Applications = () => {
       {loading ? (
         <Spinner />
       ) : applications && applications.length <= 0 ? (
-        <h1>You have no applications from job seekers.</h1>
+        <h1 className="text-2xl font-bold">You have no applications from job seekers.</h1>
       ) : (
         <>
-          <div className="account_components">
-            <h3>Applications For Your Posted Jobs</h3>
-            <div className="applications_container">
+          <div className="flex flex-col gap-8 w-full min-h-[400px]">
+            <h3 className="text-3xl font-semibold text-yellow-500">Applications For Your Posted Jobs</h3>
+            <div className="flex flex-col gap-8">
               {applications.map((element) => {
                 return (
-                  <div className="card" key={element._id}>
-                    <p className="sub-sec">
-                      <span>Job Title: </span> {element.jobInfo.jobTitle}
+                  <div className="bg-gray-300 p-6 rounded-lg" key={element._id}>
+                    <p className="flex flex-col gap-1 text-lg text-gray-500">
+                      <span className="font-semibold text-xl text-black">Job Title: </span> {element.jobInfo.jobTitle}
                     </p>
-                    <p className="sub-sec">
-                      <span>Applicant's Name: </span>{" "}
+                    <p className="flex flex-col gap-1 text-lg text-gray-500">
+                      <span className="font-semibold text-xl text-black">Applicant's Name: </span>{" "}
                       {element.jobSeekerInfo.name}
                     </p>
-                    <p className="sub-sec">
-                      <span>Applicant's Email:</span>{" "}
+                    <p className="flex flex-col gap-1 text-lg text-gray-500">
+                      <span className="font-semibold text-xl text-black">Applicant's Email:</span>{" "}
                       {element.jobSeekerInfo.email}
                     </p>
-                    <p className="sub-sec">
-                      <span>Applicant's Phone: </span>{" "}
+                    <p className="flex flex-col gap-1 text-lg text-gray-500">
+                      <span className="font-semibold text-xl text-black">Applicant's Phone: </span>{" "}
                       {element.jobSeekerInfo.phone}
                     </p>
-                    <p className="sub-sec">
-                      <span>Applicant's Address: </span>{" "}
+                    <p className="flex flex-col gap-1 text-lg text-gray-500">
+                      <span className="font-semibold text-xl text-black">Applicant's Address: </span>{" "}
                       {element.jobSeekerInfo.address}
                     </p>
-                    <p className="sub-sec">
-                      <span>Applicant's CoverLetter: </span>
+                    <p className="flex flex-col gap-1 text-lg text-gray-500">
+                      <span className="font-semibold text-xl text-black">Applicant's CoverLetter: </span>
                       <textarea
                         value={element.jobSeekerInfo.coverLetter}
                         rows={5}
                         disabled
+                        className="bg-transparent text-lg"
                       ></textarea>
                     </p>
-                    <div className="btn-wrapper">
+                    <div className="flex justify-end gap-5">
                       <button
-                        className="outline_btn"
+                        className="bg-transparent text-yellow-500 border border-yellow-500 py-2 px-4 rounded-lg hover:bg-yellow-500 hover:text-black transition duration-300 cursor-pointer"
                         onClick={() => handleDeleteApplication(element._id)}
                       >
                         Delete Application
@@ -86,7 +87,7 @@ const Applications = () => {
                           element.jobSeekerInfo &&
                           element.jobSeekerInfo.resume.url
                         }
-                        className="btn"
+                        className="bg-yellow-500 text-black font-medium py-2 px-4 rounded-lg hover:bg-black hover:text-white transition duration-300 cursor-pointer"
                         target="_blank"
                       >
                         View Resume
