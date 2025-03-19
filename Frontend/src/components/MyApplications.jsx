@@ -42,43 +42,54 @@ const MyApplications = () => {
       {loading ? (
         <Spinner />
       ) : applications && applications.length <= 0 ? (
-        <h1 style={{ fontSize: "1.4rem", fontWeight: "600" }}>
+        <h1 className="text-xl font-semibold">
           You have not applied for any job.
         </h1>
       ) : (
         <>
-          <div className="account_components">
-            <h3>My Application For Jobs</h3>
-            <div className="applications_container">
+          <div className="flex flex-col gap-8">
+            <h3 className="text-2xl font-semibold text-yellow-500">
+              My Applications For Jobs
+            </h3>
+            <div className="flex flex-col gap-6">
               {applications.map((element) => {
                 return (
-                  <div className="card" key={element._id}>
-                    <p className="sub-sec">
-                      <span>Job Title: </span> {element.jobInfo.jobTitle}
+                  <div
+                    className="bg-gray-100 p-6 rounded-lg shadow-md flex flex-col gap-4"
+                    key={element._id}
+                  >
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Job Title: </span>
+                      {element.jobInfo.jobTitle}
                     </p>
-                    <p className="sub-sec">
-                      <span>Name</span> {element.jobSeekerInfo.name}
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Name: </span>
+                      {element.jobSeekerInfo.name}
                     </p>
-                    <p className="sub-sec">
-                      <span>Email</span> {element.jobSeekerInfo.email}
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Email: </span>
+                      {element.jobSeekerInfo.email}
                     </p>
-                    <p className="sub-sec">
-                      <span>Phone: </span> {element.jobSeekerInfo.phone}
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Phone: </span>
+                      {element.jobSeekerInfo.phone}
                     </p>
-                    <p className="sub-sec">
-                      <span>Address: </span> {element.jobSeekerInfo.address}
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Address: </span>
+                      {element.jobSeekerInfo.address}
                     </p>
-                    <p className="sub-sec">
-                      <span>Coverletter: </span>
+                    <p className="text-gray-700">
+                      <span className="font-semibold">Cover Letter: </span>
                       <textarea
                         value={element.jobSeekerInfo.coverLetter}
                         rows={5}
                         disabled
+                        className="w-full p-2 border border-gray-300 rounded-md bg-gray-50"
                       ></textarea>
                     </p>
-                    <div className="btn-wrapper">
+                    <div className="flex justify-end gap-4">
                       <button
-                        className="outline_btn"
+                        className="border border-yellow-500 text-yellow-500 px-4 py-2 rounded-md hover:bg-yellow-500 hover:text-white transition"
                         onClick={() => handleDeleteApplication(element._id)}
                       >
                         Delete Application
@@ -88,8 +99,8 @@ const MyApplications = () => {
                           element.jobSeekerInfo &&
                           element.jobSeekerInfo.resume.url
                         }
-                        className="btn"
-                        target="_blank"// open new tab
+                        className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 transition"
+                        target="_blank"
                       >
                         View Resume
                       </Link>

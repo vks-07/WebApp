@@ -1,8 +1,9 @@
 import React from "react";
 
-const Hero = () => {
+const Hero = () => {  
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center mx-auto gap-12 px-4 sm:px-6 lg:px-8">
+    <section className="h-screen flex flex-col justify-center items-center 
+    mx-auto gap-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-center">
         Find Your Dream Job Today
       </h1>

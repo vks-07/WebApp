@@ -96,7 +96,7 @@ const JobPost = () => {
 
     dispatch(postJob(formData));
   };
-  
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -109,20 +109,25 @@ const JobPost = () => {
   }, [dispatch, error, loading, message]);
 
   return (
-    <div className="account_components">
-      <h3>Post A Job</h3>
-      <div>
-        <label>Title</label>
+    <div className="flex flex-col gap-8 p-8 bg-gray-100 rounded-lg shadow-md">
+      <h3 className="text-2xl font-semibold text-yellow-500">Post A Job</h3>
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Title</label>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Job Title"
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
-        <label>Job Type</label>
-        <select value={jobType} onChange={(e) => setJobType(e.target.value)}>
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Job Type</label>
+        <select
+          value={jobType}
+          onChange={(e) => setJobType(e.target.value)}
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        >
           <option value="">Select Job Type</option>
           <option value="Full-Time">Full-Time</option>
           <option value="Part-Time">Part-Time</option>
@@ -130,55 +135,65 @@ const JobPost = () => {
           <option value="Internship">Internship</option>
         </select>
       </div>
-      <div>
-        <label>Location (City)</label>
-        <select value={location} onChange={(e) => setLocation(e.target.value)}>
-          <option value="">Select Job Type</option>
-          {cities.map((element) => {
-            return <option value={element}>{element}</option>;
-          })}
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Location (City)</label>
+        <select
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        >
+          <option value="">Select Location</option>
+          {cities.map((element) => (
+            <option key={element} value={element}>
+              {element}
+            </option>
+          ))}
         </select>
       </div>
-      <div>
-        <label>Company Name</label>
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Company Name</label>
         <input
           type="text"
           value={companyName}
           onChange={(e) => setCompanyName(e.target.value)}
           placeholder="Company Name"
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
-        <label>Company/Job Introduction</label>
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Company/Job Introduction</label>
         <textarea
           value={introduction}
           onChange={(e) => setIntroduction(e.target.value)}
           placeholder="Company / Job Introduction"
           rows={7}
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
-        <label>Responsibilities</label>
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Responsibilities</label>
         <textarea
           value={responsibilities}
           onChange={(e) => setResponsibilities(e.target.value)}
           placeholder="Job Responsibilities"
           rows={7}
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
-        <label>Qualifications</label>
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Qualifications</label>
         <textarea
           value={qualifications}
           onChange={(e) => setQualifications(e.target.value)}
           placeholder="Required Qualifications For Job"
           rows={7}
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
-        <div className="label-infoTag-wrapper">
-          <label>What We Offer</label>
-          <span>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <label className="font-medium">What We Offer</label>
+          <span className="text-sm text-gray-500 flex items-center gap-1">
             <CiCircleInfo /> Optional
           </span>
         </div>
@@ -187,46 +202,55 @@ const JobPost = () => {
           onChange={(e) => setOffers(e.target.value)}
           placeholder="What are we offering in return!"
           rows={7}
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
-        <label>Job Niche</label>
-        <select value={jobNiche} onChange={(e) => setJobNiche(e.target.value)}>
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Job Niche</label>
+        <select
+          value={jobNiche}
+          onChange={(e) => setJobNiche(e.target.value)}
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        >
           <option value="">Select Job Niche</option>
-          {nichesArray.map((element) => {
-            return <option value={element}>{element}</option>;
-          })}
+          {nichesArray.map((element) => (
+            <option key={element} value={element}>
+              {element}
+            </option>
+          ))}
         </select>
       </div>
-      <div>
-        <label>Salary</label>
+      <div className="flex flex-col gap-4">
+        <label className="font-medium">Salary</label>
         <input
           type="text"
           value={salary}
           onChange={(e) => setSalary(e.target.value)}
           placeholder="50000 - 800000"
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
-        <div className="label-infoTag-wrapper">
-          <label>Hiring Multiple Candidates?</label>
-          <span>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <label className="font-medium">Hiring Multiple Candidates?</label>
+          <span className="text-sm text-gray-500 flex items-center gap-1">
             <CiCircleInfo /> Optional
           </span>
         </div>
         <select
           value={hiringMultipleCandidates}
           onChange={(e) => setHiringMultipleCandidates(e.target.value)}
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         >
           <option value="">Hiring Multiple Candidates?</option>
           <option value="Yes">Yes</option>
           <option value="No">No</option>
         </select>
       </div>
-      <div>
-        <div className="label-infoTag-wrapper">
-          <label>Personal Website Name</label>
-          <span>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <label className="font-medium">Personal Website Name</label>
+          <span className="text-sm text-gray-500 flex items-center gap-1">
             <CiCircleInfo /> Optional
           </span>
         </div>
@@ -234,13 +258,14 @@ const JobPost = () => {
           type="text"
           value={personalWebsiteTitle}
           onChange={(e) => setPersonalWebsiteTitle(e.target.value)}
-          placeholder="Peronsal Website Name/Title"
+          placeholder="Personal Website Name/Title"
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
-        <div className="label-infoTag-wrapper">
-          <label>Personal Website Link (URL)</label>
-          <span>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <label className="font-medium">Personal Website Link (URL)</label>
+          <span className="text-sm text-gray-500 flex items-center gap-1">
             <CiCircleInfo /> Optional
           </span>
         </div>
@@ -248,12 +273,12 @@ const JobPost = () => {
           type="text"
           value={personalWebsiteUrl}
           onChange={(e) => setPersonalWebsiteUrl(e.target.value)}
-          placeholder="Peronsal Website Link (URL)"
+          placeholder="Personal Website Link (URL)"
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
         />
       </div>
-      <div>
+      <div className="flex justify-center">
         <button
-          style={{ margin: "0 auto" }}
           className="btn"
           onClick={handlePostJob}
           disabled={loading}
